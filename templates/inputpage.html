@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload your File</title>
+    <title>Upload</title>
 </head>
 <body>
-    <h1>Upload your File</h1>
-    <input type="file" name="csvfile" id="csvfile" accept=".csv">
-    <button name="submit" type="submit">Submit</button>
-    <button name="next"></button>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="csvfile" id="csvfile" accept=".csv,.xslx" required>
+        <button type="submit">SUBMIT</button>
+    </form>
+    {% if message%}
+    <p>{{message}}</p>
+    {% endif%}
+
+    {% if table_string %}
+    <div>{{table_string | safe}}</div>
+    {% endif %}
 </body>
 </html>
